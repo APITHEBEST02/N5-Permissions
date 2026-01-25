@@ -1,0 +1,14 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/N5.Permissions.API/N5.Permissions.API.csproj" />
+    <Project Path="src/N5.Permissions.Application/N5.Permissions.Application.csproj" />
+    <Project Path="src/N5.Permissions.Domain/N5.Permissions.Domain.csproj" />
+    <Project Path="src/N5.Permissions.Infrastructure/N5.Permissions.Infrastructure.csproj" />
+    <Project Path="src/N5.Permissions.Shared/N5.Permissions.Shared.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/N5.Permissions.Application.Tests/N5.Permissions.Application.Tests.csproj" />
+    <Project Path="tests/N5.Permissions.IntegrationTests/N5.Permissions.IntegrationTests.csproj" />
+    <Project Path="tests/N5.Permissions.UnitTests/N5.Permissions.UnitTests.csproj" />
+  </Folder>
+</Solution>
