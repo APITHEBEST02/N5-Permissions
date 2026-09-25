@@ -46,7 +46,7 @@ Sistema de gestión de permisos de empleados construido con .NET 10 (Backend) y 
 
 1. **Clonar el repositorio**
 ```bash
-git clone https://github.com/tu-usuario/N5-Permissions.git
+git clone https://github.com/APITHEBEST02/N5-Permissions.git
 cd N5-Permissions
 ```
 
@@ -64,12 +64,14 @@ Este comando descargará todas las imágenes necesarias y levantará 6 contenedo
 - Elasticsearch
 
 3. **Inicializar la base de datos** (solo la primera vez)
+
+Los ejemplos usan `<CONTRASENA_LOCAL>` como marcador: reemplázalo únicamente en tu entorno local con el valor configurado para SQL Server. No copies credenciales reales al repositorio.
 ```bash
 # Windows PowerShell
-Get-Content init-db.sql | docker exec -i n5-permissions-sqlserver /opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P "YourStrong@Passw0rd" -C
+Get-Content init-db.sql | docker exec -i n5-permissions-sqlserver /opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P "<CONTRASENA_LOCAL>" -C
 
 # Linux/Mac
-cat init-db.sql | docker exec -i n5-permissions-sqlserver /opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P "YourStrong@Passw0rd" -C
+cat init-db.sql | docker exec -i n5-permissions-sqlserver /opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P "<CONTRASENA_LOCAL>" -C
 ```
 
 4. **Acceder a la aplicación**
@@ -134,10 +136,10 @@ docker compose up -d --build
 
 ## 🗃️ Base de Datos
 
-### Credenciales (Docker)
+### Configuración local (Docker)
 - **Server**: localhost,1433
 - **Usuario**: sa
-- **Password**: YourStrong@Passw0rd
+- **Password**: utiliza una contraseña local; no publiques valores reales.
 - **Base de datos**: PermissionsDB
 
 ### Tablas
@@ -167,7 +169,7 @@ docker compose up -d --build
 ├── frontend/
 │   └── permissions-app/             # Aplicación React
 ├── tests/
-│   ├── N5.Permissions.Tests/        # Unit Tests
+│   ├── N5.Permissions.UnitTests/    # Unit Tests
 │   └── N5.Permissions.IntegrationTests/ # Integration Tests
 ├── docker-compose.yml               # Orquestación de contenedores
 ├── init-db.sql                      # Script de inicialización DB
@@ -178,7 +180,7 @@ docker compose up -d --build
 
 ### Unit Tests
 ```bash
-cd tests/N5.Permissions.Tests
+cd tests/N5.Permissions.UnitTests
 dotnet test
 ```
 
@@ -193,7 +195,7 @@ dotnet test
 ### Backend (Production)
 ```env
 ASPNETCORE_ENVIRONMENT=Production
-ConnectionStrings__DefaultConnection=Server=sqlserver;Database=PermissionsDB;User Id=sa;Password=YourStrong@Passw0rd;TrustServerCertificate=True;
+ConnectionStrings__DefaultConnection=Server=sqlserver;Database=PermissionsDB;User Id=sa;Password=<CONTRASENA_LOCAL>;TrustServerCertificate=True;
 Kafka__BootstrapServers=kafka:29092
 Kafka__Topic=permissions
 Elasticsearch__Url=http://elasticsearch:9200
@@ -220,7 +222,7 @@ docker compose restart backend
 ### La base de datos no existe
 ```bash
 # Ejecutar el script de inicialización
-Get-Content init-db.sql | docker exec -i n5-permissions-sqlserver /opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P "YourStrong@Passw0rd" -C
+Get-Content init-db.sql | docker exec -i n5-permissions-sqlserver /opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P "<CONTRASENA_LOCAL>" -C
 ```
 
 ### Kafka no responde
@@ -254,7 +256,7 @@ docker compose down -v
 docker compose up -d --build
 
 # Reinicializar la base de datos
-Get-Content init-db.sql | docker exec -i n5-permissions-sqlserver /opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P "YourStrong@Passw0rd" -C
+Get-Content init-db.sql | docker exec -i n5-permissions-sqlserver /opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P "<CONTRASENA_LOCAL>" -C
 ```
 
 ## 📚 Tecnologías
@@ -290,7 +292,7 @@ Get-Content init-db.sql | docker exec -i n5-permissions-sqlserver /opt/mssql-too
 
 ## 📝 Licencia
 
-Este proyecto está bajo la Licencia MIT.
+Actualmente no hay un archivo LICENSE en este repositorio. Las condiciones de uso y redistribución están pendientes de definición por el autor.
 
 ## 📞 Contacto
 
